@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useFetch } from "./use-fetch";
 
 function App() {
-  const [url] = useState("http://localhost:3000/Students");
+  const [url] = useState("http://localhost:3000/members");
   const { data, isPending, error } = useFetch(url);
   return (
     <div className="App">
