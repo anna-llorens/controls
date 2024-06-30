@@ -1,16 +1,15 @@
-import { useState } from "react";
-
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useFetch } from "./use-fetch";
 
 function App() {
-  const [url] = useState("http://localhost:3000/members");
-  const { data, isPending, error } = useFetch(url);
+  const { data, isPending, error } = useFetch("http://localhost:3000/members");
   return (
     <div className="App">
       <h1>Names of Students</h1>
       {isPending && <div>Loading....</div>}
-      {error && <div>{error}</div>}
+      {error && <div>{error.message}</div>}
       {data && data.map((name: any) => <p key={name.id}>{name.name}</p>)}
+      <ReactQueryDevtools initialIsOpen />
     </div>
   );
 }
